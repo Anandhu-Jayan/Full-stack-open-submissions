@@ -4,6 +4,7 @@ const cors=require('cors')
 const app=express()
 const PORT = process.env.PORT || 3001
 app.use(express.json())
+app.use(express.static('dist'))
 app.use(morgan('tiny'))
 app.use(cors())
 morgan.token('body', function (req, res) { return JSON.stringify(req.body) })
