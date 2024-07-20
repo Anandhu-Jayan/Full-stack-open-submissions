@@ -130,6 +130,10 @@ const App = () => {
           setIsError(false)
           showMessage(`Added ${data.name}`)
         }
+      ).catch((error)=> { 
+        setIsError(true)
+        showMessage(error.response.data.error)
+      }
       )
     }
   }
