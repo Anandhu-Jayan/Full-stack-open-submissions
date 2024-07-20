@@ -109,7 +109,13 @@ const App = () => {
             setIsError(false)
             showMessage(`Number Changed for ${data.name}` )
           }
-        ).catch(()=>{
+        ).catch((error)=>{
+          if(error.response){
+            setIsError(true)
+            showMessage(error.response.data.error )
+          }
+          else
+          {
           setIsError(true)
           showMessage(`Information of ${newPerson.name} has already been removed from server` )
           phonebookServices.getAll().then(
@@ -117,6 +123,7 @@ const App = () => {
               setPersons(data)
             }
           )
+        }
         })
 
       }
